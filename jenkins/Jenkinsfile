@@ -8,12 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B clean package'
-            }
-            post {
-                success {
-                    archiveArtifacts 'target/*.hpi,target/*.jpi'
-                }
+                sh 'mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
