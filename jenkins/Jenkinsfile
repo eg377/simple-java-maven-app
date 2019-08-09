@@ -10,6 +10,11 @@ pipeline {
             steps {
                 sh 'mvn -B clean package'
             }
+            post {
+                success {
+                    archiveArtifacts 'target/*.hpi,target/*.jpi'
+                }
+            }
         }
         stage('Test') {
             steps {
